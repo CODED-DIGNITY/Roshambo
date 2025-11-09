@@ -15,15 +15,41 @@ userChoiceImg.classList.add("choice-img");
 
 let computerScore = 0;
 let humanScore = 0;
+let gameOver = false;
 
 function getComputerChoice() {
 	let cc = Math.random();
-	if (cc < 0.33) return "stone";
-	else if (cc > 0.33 && cc < 0.66) return "paper";
-	else if (cc > 0.33) return "scissor";
+	if (cc < 1 / 3) return "stone";
+	else if (cc < 2 / 3) return "paper";
+	else return "scissor";
+}
+
+function updateUI(humanChoice, computerChoice) {
+	botChoiceImg.src = "assets/" + computerChoice + ".webp";
+	userChoiceImg.src = "assets/" + humanChoice + ".webp";
+	containerImages.appendChild(userChoiceImg);
+	containerImages.appendChild(botChoiceImg);
+	container.appendChild(para);
+	scoreUser.innerHTML = `Your <br> Score <br> ${humanScore}`;
+	scoreBot.innerHTML = `Villager <br> Score <br> ${computerScore}`;
+}
+
+function checkGameOver() {
+	if (computerScore >= 5 || humanScore >= 5) {
+		gameOver = true;
+		if (computerScore > humanScore) {
+			alert("Game Over! Villager Wins!");
+			para.innerText = "Game Over! Villager Wins!";
+		} else {
+			alert("Game Over! You Wins!");
+			para.innerText = "Game Over! You Win!";
+		}
+		container.appendChild(para);
+	}
 }
 
 function playRound(humanChoice, computerChoice) {
+	if (gameOver) return;
 	if (humanChoice === computerChoice) {
 		para.innerText = `It's a tie! you both chose ${humanChoice}`;
 	} else if (
@@ -37,13 +63,8 @@ function playRound(humanChoice, computerChoice) {
 		computerScore++;
 		para.innerText = `You lose ${computerChoice} beats ${humanChoice}`;
 	}
-	botChoiceImg.src = "assets/" + computerChoice + ".webp";
-	userChoiceImg.src = "assets/" + humanChoice + ".webp";
-	containerImages.appendChild(userChoiceImg);
-	containerImages.appendChild(botChoiceImg);
-	container.appendChild(para);
-	scoreUser.innerHTML = `Your <br> Score <br> ${humanScore}`;
-	scoreBot.innerHTML = `vIllager <br> Score <br> ${computerScore}`;
+	updateUI(humanChoice, computerChoice);
+	checkGameOver();
 }
 
 stone.addEventListener("click", () => {
@@ -58,12 +79,3 @@ scissor.addEventListener("click", () => {
 	humanChoice = "scissor";
 	playRound(humanChoice, getComputerChoice());
 });
-
-if (computerScore === 5 || humanScore === 5) {
-	if (computerScore > humanScore) {
-		para.innerText = "Game Over! Villager Wins!";
-	} else {
-		para.innerText = "Game Over! You Win!";
-	}
-	container.appendChild(para);
-}
