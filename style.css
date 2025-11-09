@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+* {
+	/*border: solid 1px red;*/
+	box-sizing: border-box;
+}
+body {
+	margin: 0px;
+	background: #101010;
+	color: whitesmoke;
+	display: flex;
+	flex: 1 1 auto;
+	text-align: center;
+	justify-content: center;
+	flex-direction: column;
+	font-family: "VT323", monospace;
+	font-size: 38px;
+}
+
+.head h1 {
+	font-size: 100px;
+	margin-bottom: 10px;
+}
+.head h3 {
+	margin-top: 10px;
+}
+
+.cards {
+	justify-self: center;
+	width: 800px;
+	display: flex;
+	justify-content: space-around;
+}
+
+.card {
+	width: auto;
+	padding: 20px;
+	background-color: #1b1b1b;
+	border-radius: 25px;
+	transition: all 0.3s;
+}
+.images {
+	width: 200px;
+}
+.card p {
+	margin: 0px;
+}
+.card:hover {
+	background-color: #444444;
+	transform: translateY(-10px);
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 30px;
+	width: fit-content;
+	margin: 0 auto;
+	gap: 20px;
+}
+.container .images {
+	display: flex;
+	gap: 50px;
+	justify-content: center;
+	align-items: center;
+}
+.choice-img {
+	width: 200px;
+	height: 200px;
+}
+
+.score {
+	margin-top: 0px;
+	display: flex;
+	justify-self: center;
+}
+.players {
+	width: 350px;
+	padding: 20px;
+	height: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.photo {
+	height: 200px;
+}

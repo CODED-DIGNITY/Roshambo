@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script src="script.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="head">
+			<h1>ROSHAMBO</h1>
+			<h3>Minecraft SPS</h3>
+		</div>
+		<div class="game">
+			<div class="cards">
+				<div class="stone card">
+					<img class="images" src="assets/stone.webp" alt="rock" />
+					<p>STONE</p>
+				</div>
+				<div class="paper card">
+					<img class="images" src="assets/paper.webp" alt="paper" />
+					<p>PAPER</p>
+				</div>
+				<div class="scissor card">
+					<img class="images" src="assets/scissor.webp" alt="scissor" />
+					<p>SHEARS</p>
+				</div>
+			</div>
+			<div class="container">
+				<div class="images">
+					<!---<img class="user-choice-img choice-img" src="assets/paper.webp" />
+					<img class="bot-choice-img choice-img" src="assets/paper.webp" />-->
+				</div>
+			</div>
+			<div class="score">
+				<div class="user players">
+					<img class="photo" src="assets/steve.png" />
+					<p>
+						Your <br />
+						Score <br />0
+					</p>
+				</div>
+				<div class="bot players">
+					<p>
+						Villager Score <br />
+						0
+					</p>
+					<img class="photo" src="assets/villager.webp" />
+				</div>
+			</div>
+		</div>
+		<script src="script.js"></script>
+	</body>
 </html>
