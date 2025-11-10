@@ -5,6 +5,7 @@ const container = document.querySelector(".container");
 const containerImages = document.querySelector(".container .images");
 const scoreUser = document.querySelector(".score .user p");
 const scoreBot = document.querySelector(".score .bot p");
+const resetBtn = document.querySelector(".reset");
 
 let para = document.createElement("p");
 para.style.margin = "0px";
@@ -24,14 +25,18 @@ function getComputerChoice() {
 	else return "scissor";
 }
 
-function updateUI(humanChoice, computerChoice) {
-	botChoiceImg.src = "assets/" + computerChoice + ".webp";
-	userChoiceImg.src = "assets/" + humanChoice + ".webp";
-	containerImages.appendChild(userChoiceImg);
-	containerImages.appendChild(botChoiceImg);
+function updateUI() {
 	container.appendChild(para);
 	scoreUser.innerHTML = `Your <br> Score <br> ${humanScore}`;
 	scoreBot.innerHTML = `Villager <br> Score <br> ${computerScore}`;
+}
+
+function resetGame() {
+	computerScore = 0;
+	humanScore = 0;
+	gameOver = false;
+	para.innerText = "";
+	updateUI();
 }
 
 function checkGameOver() {
@@ -58,12 +63,12 @@ function playRound(humanChoice, computerChoice) {
 		(humanChoice === "scissor" && computerChoice === "paper")
 	) {
 		humanScore++;
-		para.innerText = `You win ${humanChoice} beats ${computerChoice}`;
+		para.innerText = `Villager chose ${computerChoice} You win`;
 	} else {
 		computerScore++;
-		para.innerText = `You lose ${computerChoice} beats ${humanChoice}`;
+		para.innerText = `Villager chose ${computerChoice} You Lose`;
 	}
-	updateUI(humanChoice, computerChoice);
+	updateUI();
 	checkGameOver();
 }
 
@@ -79,3 +84,5 @@ scissor.addEventListener("click", () => {
 	humanChoice = "scissor";
 	playRound(humanChoice, getComputerChoice());
 });
+
+resetBtn.addEventListener("click", resetGame);
